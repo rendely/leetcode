@@ -1,3 +1,4 @@
+import pytest
 from solution import Solution
 
 solution = Solution();
@@ -14,3 +15,6 @@ class TestSolution:
     
     def test_entire_length(self):
         assert solution.maxSubArray([3,-2, 0, 0, 0, 0, 1, 3]) == 5
+
+    def test_alternating(self):
+        assert solution.maxSubArray([1,-1, 1, -1, 1, -1, 1]) == 1        
