@@ -2,7 +2,20 @@
 
 
 class Solution:
-    def robRecursiveBrute(self, nums):
+   def rob(self, nums, i=0, mem=None):
+        if mem is None:
+            mem = {}
+        if i in mem:
+            return mem[i]
+        if i == len(nums)-1:
+            return nums[i]
+        if i == len(nums) -2:
+            return max(nums[i], nums[i+1])
+        mem[i] = nums[i] + self.rob(nums,i+2, mem)
+        mem[i+1] = self.rob(nums,i+1, mem)
+        return max(mem[i], mem[i+1])
+
+   def robRecursiveBrute(self, nums):
         if len(nums) == 1:
             return nums[0]
         if len(nums) == 2:
@@ -34,3 +47,9 @@ In this example, also not good algo to start with largest number, you'd miss 90 
 You would never skip more than two in a row because you'd be giving up a free num
 
 '''
+
+if __name__ == '__main__':
+    #debugging
+    solution = Solution()
+    ans = solution.rob([2,7,9,3,1])
+    print(f'{ans=}')
