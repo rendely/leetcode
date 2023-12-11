@@ -3,10 +3,10 @@ import math
 
 class Solution:
     def superEggDrop(self, k: int,n: int) -> int:
-        if k == 1:
-            return n
-
-        return math.floor((n-1)/(2**(k-1)))+1
+        while (k > 1):
+            n = math.ceil(n / 2)
+            k = k -1 
+        return n        
 
 
 if __name__ == '__main__':
@@ -29,14 +29,18 @@ Examples
 - So for k = 1, answer is n
 
 - If k = 2 and n = 3, answer is 2
-- If k = 2 and n = 4, answer is 2 since you can guess it's 2nd floor, if it 
-  breaks you try floor 1 as well. if it doesnt break you try floor 3
-- If k = 2 and n = 5, answer is 3
+- If k = 2 and n = 4, answer is 3 since you can guess it's 2nd floor, if it 
+  breaks you try floor 1 as well. if it doesnt break you try floor 3 and then 4
+- If k = 2 and n = 5, answer is 3 since you can guess floor 3, if it breaks,
+  try 1 and 2. if it doesn't try 4, then 5. 
 - If k = 2 and n = 10, answer is 5
 - So for k = 2, it's floor((n-1) / 2) +1
 
-- If k = 3 and n = 10, answer is 4? TODO: check math
-- So for k = 3, it's floor((n-1 / 4)) + 2
+- If k = 3 and n = 5, answer is 3 since you can guess floor 3, if it breaks,
+  try 1 and 2. if it doesn't try 4, then 5. having more eggs doesnt speed up
+  since you can't divide further on the next step
+
+So I think the algo is, divide in half, rounding up until you have 1 egg, at that point return number of steps
 
 Problem statement
 You are given k identical eggs and you have access to a building with n floors labeled from 1 to n.
