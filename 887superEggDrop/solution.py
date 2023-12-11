@@ -3,10 +3,12 @@ import math
 
 class Solution:
     def superEggDrop(self, k: int,n: int) -> int:
+        drops = 0
         while (k > 1):
             n = math.ceil(n / 2)
             k = k -1 
-        return n        
+            drops = drops + 1
+        return n + drops
 
 
 if __name__ == '__main__':
@@ -41,6 +43,8 @@ Examples
   since you can't divide further on the next step
 
 So I think the algo is, divide in half, rounding up until you have 1 egg, at that point return number of steps
+
+TODO: need to modify math for off by one since it breaks at higher than f
 
 Problem statement
 You are given k identical eggs and you have access to a building with n floors labeled from 1 to n.
