@@ -24,12 +24,11 @@ class Solution:
             else:
                 return 0
 
-        print(f' {available_paths=},{visited=}, {num_empty=}')
+        # print(f' {available_paths=},{visited=}, {num_empty=}')
 
         valid_paths = 0        
         # for each path, check if it's a valid path and return count of subpaths
         for path in available_paths:
-            # TODO: fix the math here
             valid_paths += self.uniquePathsIII(grid, path, end, num_empty, visited.copy())
 
         return valid_paths
@@ -50,6 +49,7 @@ class Solution:
         if (j < len(grid[0])-1 and grid[i][j+1] in [0,2] and (i,j+1) not in visited):
             available.append((i,j+1))
         return available     
+        
     def getStartEnd(self, grid):
         start = None
         end = None 
