@@ -1,9 +1,49 @@
+# https://leetcode.com/problems/super-egg-drop/
+import math 
+
 class Solution:
-    def superEggDrop(self, k,n):
-        pass
+    def superEggDrop(self, k: int,n: int) -> int:
+        if k == 1:
+            return n
+
+        return math.floor((n-1)/(2**(k-1)))+1
 
 
 if __name__ == '__main__':
-    solution = Solution();
+    solution = Solution()
     ans = solution.superEggDrop(1,2)
     print(f'Does 2=={ans=}')
+
+'''
+Solution notes
+- Seems like a binary search, but you can only binary search until you have one
+  egg remaining
+- Once you have one egg you start at the lowest unknown floor and,keep going up
+  until you reach the breaking floor
+- Seems more like a math equation than an algorithm
+
+Examples
+- If k = 1 and n = 1, answer is 1
+- If k = 1 and n = 2, answer is 2
+- If k = 1 and n = 3, answer is 3
+- So for k = 1, answer is n
+
+- If k = 2 and n = 3, answer is 2
+- If k = 2 and n = 4, answer is 2 since you can guess it's 2nd floor, if it 
+  breaks you try floor 1 as well. if it doesnt break you try floor 3
+- If k = 2 and n = 5, answer is 3
+- If k = 2 and n = 10, answer is 5
+- So for k = 2, it's floor((n-1) / 2) +1
+
+- If k = 3 and n = 10, answer is 4? TODO: check math
+- So for k = 3, it's floor((n-1 / 4)) + 2
+
+Problem statement
+You are given k identical eggs and you have access to a building with n floors labeled from 1 to n.
+
+You know that there exists a floor f where 0 <= f <= n such that any egg dropped at a floor higher than f will break, and any egg dropped at or below floor f will not break.
+
+Each move, you may take an unbroken egg and drop it from any floor x (where 1 <= x <= n). If the egg breaks, you can no longer use it. However, if the egg does not break, you may reuse it in future moves.
+
+Return the minimum number of moves that you need to determine with certainty what the value of f is
+'''
