@@ -7,10 +7,22 @@ class Solution:
         if n == 1:
             return [P().to_str()]
 
+        p_answers = self.recursiveParentheses(n, P())
+        return [p.to_str() for p in p_answers]
+        
+    def recursiveParentheses(self, n: int, p_head: 'P') -> 'List[P]':
+        if n == 1:
+            p_head.children = [P()]
+            return [p_head]
+        
+        return self.recursiveParentheses(n-1, p_head)
+
 class P:
     '''Parentheses class'''
-    def __init__(self, children = []):
-        self.children = children 
+    def __init__(self, children: 'List[P]' = None):
+        if children is None:
+            children = []
+        self.children = children
     
     def to_str(self):
         if len(self.children) == 0:
