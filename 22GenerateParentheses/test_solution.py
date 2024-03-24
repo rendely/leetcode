@@ -6,6 +6,6 @@ solution = Solution();
 
 class TestSolution:
     def test_one(self):       
-        assert solution.generateParenthesis(1) == ["()"]
+        assert set(solution.generateParenthesis(1)) == set(["()"])
     def test_three(self):       
-        assert solution.generateParenthesis(3) == ["((()))","(()())","(())()","()(())","()()()"]
+        assert set(solution.generateParenthesis(3)) == set(["((()))","(()())","(())()","()(())","()()()"])
