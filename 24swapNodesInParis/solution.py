@@ -18,7 +18,7 @@ class ListNode:
 class Solution:
     def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
         # Check if only 0 or 1 nodes
-        if head.val is None or head.next is None:
+        if head is None or head.next is None:
             return head
         
         # Do the first swap and keep that first head to return

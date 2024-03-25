@@ -6,9 +6,9 @@ solution = Solution();
 
 class TestSolution:
     def test_empty(self):  
-        input = ListNode(None)
+        input = None
         output = solution.swapPairs(input)
-        expected_output = ListNode(None)
+        expected_output = None
         assert f'{output}' == f'{expected_output}'
 
     def test_one(self):  
