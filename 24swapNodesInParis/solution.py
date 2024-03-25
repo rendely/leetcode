@@ -17,7 +17,35 @@ class ListNode:
     
 class Solution:
     def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        return head
+        # Check if only 0 or 1 nodes
+        if head.val is None or head.next is None:
+            return head
+        
+        # Do the first swap and keep that first head to return
+        a = head
+        b = head.next
+        return_head = b
+        a.next = b.next
+        b.next = a
+
+        # Check if more pairs 
+        if a.next is None:
+            return return_head
+
+        # Go through rest of pairs
+        prior = a
+        a = prior.next
+        b = prior.next.next
+
+        if a is not None and b is not None:
+            prior.next = b 
+            a.next = b.next
+            b.next = a 
+            prior = a
+            a = prior.next
+            b = prior.next
+
+        return return_head
     
 input = ListNode(1,ListNode(2,ListNode(3,ListNode(4))))
 print(input)
