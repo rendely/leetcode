@@ -28,22 +28,15 @@ class Solution:
         a.next = b.next
         b.next = a
 
-        # Check if more pairs 
-        if a.next is None:
-            return return_head
-
-        # Go through rest of pairs
+        # Go through rest of pairs if they exist
         prior = a
-        a = prior.next
-        b = prior.next.next
-
-        if a is not None and b is not None:
+        while prior.next and prior.next.next:
+            a = prior.next
+            b = prior.next.next
             prior.next = b 
             a.next = b.next
             b.next = a 
             prior = a
-            a = prior.next
-            b = prior.next
 
         return return_head
     
