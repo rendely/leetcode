@@ -34,3 +34,9 @@ class TestSolution:
         output = solution.swapPairs(input)
         expected_output = ListNode(2,ListNode(1,ListNode(4,ListNode(3))))
         assert f'{output}' == f'{expected_output}'
+
+    def test_seven(self):  
+        input = ListNode(2,ListNode(5,ListNode(3,ListNode(4, ListNode(6, ListNode(2, ListNode(2)))))))
+        output = solution.swapPairs(input)
+        expected_output = ListNode(5,ListNode(2,ListNode(4,ListNode(3, ListNode(2, ListNode(6, ListNode(2)))))))
+        assert f'{output}' == f'{expected_output}'
