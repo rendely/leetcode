@@ -28,21 +28,21 @@ class Solution:
 
         # keep going until all nodes used or count reached
         while is_next is not None and count < k:      
-            print(f'loop for {count=}')      
             count += 1
             swap_node = is_next
-            print(f'{swap_node=}')
             is_next = is_next.next
-            print(f'{is_next=}')
             swap_node.next = new_head
             new_head = swap_node     
-            print(f'{new_head=}')   
-        # if we run out of nodes before count == k
+        # if we run out of nodes before count == k, reverse with clever trick
+        if count < k:
+            return self.reverseKGroup(new_head, count)
         # if we reached the count limit
-        new_tail.next = self.reverseKGroup(is_next, k)
+        if count == k:
+            new_tail.next = self.reverseKGroup(is_next, k)
+        
         return new_head
 
-input = ListNode(1,ListNode(2,ListNode(3,ListNode(4))))
+input = input = ListNode(1,ListNode(2,ListNode(3,ListNode(4, ListNode(5)))))
 output = Solution().reverseKGroup(input, 3)
 print(output)
 
