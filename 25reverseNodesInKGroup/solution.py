@@ -17,23 +17,34 @@ class ListNode:
 
 class Solution:
     def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
-        if k == 1 or head.next is None:
+        if k == 1 or head is None or head.next is None:
             return head
-        
-        new_head = None
-        new_tail = None
-        count = 0
+                        
+        new_head = head
+        new_tail = head
         is_next = head.next
+        new_head.next = None
+        count = 1
 
-        # keep going until all nodes used
-        while is_next is not None:
-        
-        # if we run out of nodes before count == k, append rest as-
-
-
-        
-
+        # keep going until all nodes used or count reached
+        while is_next is not None and count < k:      
+            print(f'loop for {count=}')      
+            count += 1
+            swap_node = is_next
+            print(f'{swap_node=}')
+            is_next = is_next.next
+            print(f'{is_next=}')
+            swap_node.next = new_head
+            new_head = swap_node     
+            print(f'{new_head=}')   
+        # if we run out of nodes before count == k
+        # if we reached the count limit
+        new_tail.next = self.reverseKGroup(is_next, k)
         return new_head
+
+input = ListNode(1,ListNode(2,ListNode(3,ListNode(4))))
+output = Solution().reverseKGroup(input, 3)
+print(output)
 
 '''
 Solution brainstorm #1
@@ -73,5 +84,6 @@ Solution brainstorm #2 maybe a cleaner recursive solution?
 [1,2,3,4,5,6] with k = 2
 reverse([1,2]) + reverse([3,4,5,6])
 reverse([1,2]) + ( reverse([3,4]) + reverse([5,6])
+But how do you "glue" them together? maybe return the tail as well?
 
 ''' 
