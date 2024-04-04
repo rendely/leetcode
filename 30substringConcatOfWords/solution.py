@@ -5,9 +5,6 @@ from typing import List
 class Solution:
     def findSubstring(self, s: str, words: List[str]) -> List[int]:
         
-        # create set for checking against
-        check_set = set(words)
-
         # word length for managing loop
         word_len = len(words[0])
 
@@ -18,7 +15,7 @@ class Solution:
         s_len = len(s)
 
         # create used set
-        used_set = set()
+        used_words = []
 
         # store indices results
         results = []
@@ -31,21 +28,28 @@ class Solution:
             return
 
         # while we enough characters left for substring, increment by one and check
-        while i + substring_len < s_len:
+        while i + substring_len <= s_len:
             #temporary index for checking substring
             j = i
-            #while we keep finding words in the substring
             this_substring = s[j:j+word_len]
-            while this_substring in check_set and this_substring not in used_set:
+            
+            #while we keep finding words in the substring
+            while this_substring in words:
+                print('inner')
+                print(f'{this_substring=} {words=} {used_words=}')
                 j = j + word_len
-                used_set.add(this_substring)
+                words.remove(this_substring)
+                used_words.append(this_substring)
                 this_substring = s[j:j+word_len]
             
-            if len(used_set) == len(words):
+            if len(words) == 0:
                 results.append(i)
             #reset before next loop
-            used_set.clear()
+            words.extend(used_words)
+            used_words = []
             i = i + 1
+            print('outer')
+            print(f'{this_substring=} {words=} {used_words=}')
 
         return results
 
