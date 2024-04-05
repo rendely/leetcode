@@ -35,8 +35,6 @@ class Solution:
             
             #while we keep finding words in the substring
             while this_substring in words:
-                print('inner')
-                print(f'{this_substring=} {words=} {used_words=}')
                 j = j + word_len
                 words.remove(this_substring)
                 used_words.append(this_substring)
@@ -48,8 +46,6 @@ class Solution:
             words.extend(used_words)
             used_words = []
             i = i + 1
-            print('outer')
-            print(f'{this_substring=} {words=} {used_words=}')
 
         return results
 
