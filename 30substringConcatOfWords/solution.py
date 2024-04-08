@@ -14,8 +14,13 @@ class Solution:
         # string length for managing loops
         s_len = len(s)
 
-        # create used set
-        used_words = []
+        #create check dict
+        checked_words = {}
+        for word in words:
+            if word in checked_words:
+                checked_words[word]['avail'] += 1  
+            else:              
+                checked_words[word]['avail'] = {'avail': 1, 'used': 0, 'step': -1}            
 
         # store indices results
         results = []
