@@ -7,6 +7,19 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
+        for i in range(len(nums)-2,-1,-1):
+            for j in range(len(nums)-1,i,-1):
+                if nums[j] > nums[i]:
+                    left = nums[i]
+                    right = nums[j]
+                    nums[i] = right
+                    nums[j] = left
+                    self.sort(nums,i+1)
+                    return nums
+                
+        return self.sort(nums)
+
+
     def sort(self, nums: List[int], start_index=0) -> None:
         for i in range(start_index, len(nums)):
             for j in range(i+1,len(nums)):
@@ -16,11 +29,15 @@ class Solution:
                 if left > right:
                     nums[i] = right
                     nums[j] = left
+        return nums
                        
 nums = [3,1,4,5,1,3,0]
-Solution().sort(nums)
+nums = [1,4,3,2]
+nums = [3,2,1]
+# Solution().sort(nums)
+# print(nums)
+Solution().nextPermutation(nums)
 print(nums)
-        
 
 """
 Solution brainstorming
@@ -50,10 +67,10 @@ Example going up
 1234
 1243 swap last and second last
 1324 swap last and second last and then middle
-1342
-1423
-1432
-2134
+1342 
+1423 how do we know to move four and not 2 to front?
+1432 
+2134 how do we know 2 is the smallest swap to front?
 
 """
 
