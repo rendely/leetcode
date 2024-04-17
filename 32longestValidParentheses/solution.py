@@ -3,7 +3,42 @@
 
 class Solution:
     def longestValidParentheses(self, s: str) -> int:
-        return 0
+        
+        longest = 0
+        
+        if len(s)< 2:
+            return longest
+
+        
+        for i in range(0,len(s)):
+            curr_length = 0
+            num_opens = 0
+            num_closes = 0
+            for j in range(i, len(s)):  
+                if i == j and s[j] == ')':
+                    break 
+                
+                if s[j] == '(':
+                    #TODO: check for off by one error here
+                    if num_opens - num_closes <= (len(s) - j):
+                        num_opens +=1
+                    else:
+                        break
+                
+                if s[j] == ')':
+                    if num_opens > num_closes:
+                        num_closes +=1
+                    else:
+                        break
+                
+                curr_length += 1
+            if curr_length >= longest and num_closes == num_opens:
+                longest = curr_length
+
+            
+        return longest
+    
+Solution().longestValidParentheses('))(())')
     
 '''
 solution notes
