@@ -15,6 +15,13 @@ class TestSolution:
         output = solution.longestValidParentheses(s)
         expected_output = 2
         assert output == expected_output
+        
+    def test_two_b(self):  
+        s = '))))((()(('
+        output = solution.longestValidParentheses(s)
+        expected_output = 2
+        assert output == expected_output
+
 
     def test_four(self):  
         s = ")()())"
