@@ -21,3 +21,9 @@ class TestSolution:
         output = solution.longestValidParentheses(s)
         expected_output = 4
         assert output == expected_output
+    
+    def test_four_b(self):
+        s = "(())("
+        output = solution.longestValidParentheses(s)
+        expected_output = 4
+        assert output == expected_output

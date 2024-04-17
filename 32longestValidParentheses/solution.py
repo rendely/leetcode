@@ -20,7 +20,7 @@ class Solution:
                 
                 if s[j] == '(':
                     #TODO: check for off by one error here
-                    if num_opens - num_closes <= (len(s) - j):
+                    if num_opens - num_closes < (len(s) - j):
                         num_opens +=1
                     else:
                         break
