@@ -15,12 +15,12 @@ class Solution:
             num_opens = 0
             num_closes = 0
             for j in range(i, len(s)):  
+                print(i,j)
                 if i == j and s[j] == ')':
                     break 
                 
                 if s[j] == '(':
-                    #TODO: check for off by one error here
-                    if num_opens - num_closes < (len(s) - j):
+                    if num_opens - num_closes < (len(s) - j) - 1:
                         num_opens +=1
                     else:
                         break
@@ -32,13 +32,14 @@ class Solution:
                         break
                 
                 curr_length += 1
+            print(f'{curr_length=}, {num_closes=}, {num_opens=}')
             if curr_length >= longest and num_closes == num_opens:
                 longest = curr_length
 
             
         return longest
     
-Solution().longestValidParentheses('))(())')
+Solution().longestValidParentheses('(())(')
     
 '''
 solution notes
