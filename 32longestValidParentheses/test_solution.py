@@ -34,3 +34,9 @@ class TestSolution:
         output = solution.longestValidParentheses(s)
         expected_output = 4
         assert output == expected_output
+
+    def test_six(self):
+        s = '(())()(()(('
+        output = solution.longestValidParentheses(s)
+        expected_output = 6
+        assert output == expected_output

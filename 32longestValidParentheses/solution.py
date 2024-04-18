@@ -15,7 +15,7 @@ class Solution:
             num_opens = 0
             num_closes = 0
             for j in range(i, len(s)):  
-                print(i,j)
+                # print(i,j)
                 if i == j and s[j] == ')':
                     break 
                 
@@ -28,18 +28,17 @@ class Solution:
                 if s[j] == ')':
                     if num_opens > num_closes:
                         num_closes +=1
+                        if num_closes == num_opens and curr_length + 1 > longest:
+                            longest = curr_length + 1
                     else:
                         break
                 
                 curr_length += 1
-            print(f'{curr_length=}, {num_closes=}, {num_opens=}')
-            if curr_length >= longest and num_closes == num_opens:
-                longest = curr_length
-
+            # print(f'{longest=} {curr_length=}, {num_closes=}, {num_opens=}')
             
         return longest
     
-Solution().longestValidParentheses('(())(')
+Solution().longestValidParentheses('(())()(()((')
     
 '''
 solution notes
