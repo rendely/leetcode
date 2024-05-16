@@ -8,7 +8,7 @@ class Solution:
             return 0
         
         if len(nums) == 1 and nums[0] == val:
-            nums[0] = '_'
+            nums[0] = None
             return 0        
 
         front = 0
@@ -18,24 +18,25 @@ class Solution:
         while back > front:            
             if nums[front] == val:
                 back_num = nums[back]
-                while back_num == val and back_num > front:
-                    nums[back] = '_'
-                    back = back + 1
+                while back_num == val and back > front:
+                    nums[back] = None
+                    back = back - 1
                     back_num = nums[back]
-                
                 nums[front] = back_num 
-                nums[back] = '_'
+                nums[back] = None
+                back = back -1 
+                keep_count = keep_count + 1
             else:            
                 keep_count = keep_count + 1
             front = front + 1
         
-        return keep_count
+        return keep_count+1
     
 
-input = [0,1,2,2,3,0,4,2]
+input = [3,2,2,3]
 print(input)
 sol = Solution()
-ans = sol.removeElement(input, 2)
+ans = sol.removeElement(input, 3)
 print(ans,input)
 
 '''
